@@ -10,17 +10,34 @@ body {
 
 nav {
     height: 5vh;
+	display: flex;
     color: white;
     text-align: center;
     align-items: center;
     padding: 2rem;
-
     background: linear-gradient(45deg, black 20%, #222 50%, black 80%);
 }
 
+button {
+	border: transparent;
+	background-color: transparent;
+	color: inherit;
+	font-size: inherit;
+}
+
 nav span {
+	display: inline-block;
+	width: 100%;
     font-size: 2rem;
     font-weight: bold;
+}
+
+#language-button {
+	text-align: right;
+}
+
+button:hover {
+	box-shadow: white 0 0 10px;
 }
 
 .grid {
