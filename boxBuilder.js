@@ -76,6 +76,20 @@ function projectPageBuilder() {
 
 }
 
+function openNav() {
+	let nav_title = document.getElementById("nav-title");
+
+	nav_title.textContent = "Ben Scotti - Portfolio"
+
+	let language_button = document.getElementById("language-button");
+
+	let button = document.createElement("button");
+	button.textContent = "!";
+
+	// language_box.appendChild(button);
+	language_button.replaceChild(button, language_button.lastChild);
+}
+
 function loadBoxes() {
 	for (let i = 0; i < projects.length; i++) {
 		boxBuilder(i);
