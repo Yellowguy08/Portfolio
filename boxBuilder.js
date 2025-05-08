@@ -80,7 +80,7 @@ function openNav() {
 	let nav_title = document.getElementById("nav-title");
 	let nav = document.getElementById("nav");
 
-	nav_title.textContent = "Ben Scotti - Portfolio"
+	nav_title.textContent = "Ben Scotti - Portfolio";
 
 	let language_button = document.getElementById("language-button");
 
@@ -89,7 +89,7 @@ function openNav() {
 
 	// language_box.appendChild(button);
 	language_button.replaceChild(button, language_button.lastChild);
-	nav.style.justifyContent = "leading";
+	nav.style.justifyContent = "left";
 }
 
 function loadBoxes() {
