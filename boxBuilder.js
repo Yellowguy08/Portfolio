@@ -90,7 +90,7 @@ function openNav() {
 
 	// language_box.appendChild(button);
 	language_button.replaceChild(button, language_button.lastChild);
-	nav_container.style.width = "0";
+	nav_container.style.width = 0;
 }
 
 function loadBoxes() {
@@ -98,6 +98,7 @@ function loadBoxes() {
 		boxBuilder(i);
 	}
 }
+
 function boxBuilder(index) {
 
 // 		HTML STRUCTURE
