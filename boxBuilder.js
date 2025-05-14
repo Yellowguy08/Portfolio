@@ -79,6 +79,7 @@ function projectPageBuilder() {
 function openNav() {
 	let nav_title = document.getElementById("nav-title");
 	let nav = document.getElementById("nav");
+	let nav_container = document.getElementById("nav-container");
 
 	nav_title.textContent = "Ben Scotti - Portfolio";
 
@@ -89,7 +90,7 @@ function openNav() {
 
 	// language_box.appendChild(button);
 	language_button.replaceChild(button, language_button.lastChild);
-	nav.style.justifyContent = "left";
+	nav_container.style.width = "0";
 }
 
 function loadBoxes() {

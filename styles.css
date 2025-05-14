@@ -21,9 +21,18 @@ nav {
     color: white;
     text-align: center;
     align-items: center;
-    justify-content: center;
-    padding: 2rem;
+    /* justify-content: center; */
+    padding: 2rem 0;
     background: linear-gradient(45deg, black 20%, #222 50%, black 80%);
+    width: 100%;
+    position: relative;
+}
+
+#nav-container {
+    white-space: nowrap;
+    width: 100%;
+    transition: width .8s ease;
+    padding: 2rem;
 }
 
 a {
@@ -41,6 +50,7 @@ nav span {
 	display: inline-block;
     font-size: 2rem;
     font-weight: bold;
+    width: max-content;
 }
 
 button:hover {
