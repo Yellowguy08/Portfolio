@@ -81,16 +81,19 @@ function openNav() {
 	let nav = document.getElementById("nav");
 	let nav_container = document.getElementById("nav-container");
 
-	nav_title.textContent = "Ben Scotti - Portfolio";
-
 	let language_button = document.getElementById("language-button");
 
 	let button = document.createElement("button");
 	button.textContent = "!";
 
 	// language_box.appendChild(button);
-	language_button.replaceChild(button, language_button.lastChild);
-	nav_container.style.width = 0;
+	nav_container.style.animationName = "buffer";
+
+	nav_container.addEventListener("animationstart", function(){
+		nav_title.textContent = "Ben Scotti - Portfolio";
+		language_button.replaceChild(button, language_button.lastChild);
+	});
+	
 }
 
 function loadBoxes() {
