@@ -85,8 +85,26 @@ button:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+        
     background-color: purple;
+}
+
+@media screen and (max-width: 1400px) {
+    .project-box {
+        width: 20vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .project-box {
+        width: 35vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .project-box {
+        width: 70vw;
+    }
 }
 
 .project-title-box {
