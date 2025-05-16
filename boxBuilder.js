@@ -32,7 +32,8 @@ let projects = [
 	new project("Scratch", "My scratch account with some of the project I have worked on.", "images/scratchProfile.png"),
 	new project("Centrellas Website", "My first large website project remaking a resturaunt website.", "images/supercell.png"),
 	new project("Gargoyle", "A custom google browser face for ease of access to my classes when I was in High School.", "images/supercell.png"),
-	new project("Wind Data App", "An app that tracks wind and weather data and displays the loaction and decodes the value.", "images/windDataApp.png")
+	new project("Wind Data App", "An app that tracks wind and weather data and displays the loaction and decodes the value.", "images/windDataApp.png"),
+	new project("Fords Wellness", "A web app for my highschool for wellness day sign ups.", "images/fordsWellness.png")
 
 ];
 
