@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="boxBuilder.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quests</title>
+</head>
+<body>
+
+    <nav id="nav">
+        <div id="nav-container">
+
+            <!-- Road Map with my learning journey -->
+            <svg name="map" class="inter" width="55" height="49" stroke="currentColor">
+                <!------------------------Map--------------------------------------------------------Dash_1--------------------Dash_2--------------------X-------------------------------------------->
+                <path stroke-width="5" d="M5 11 L5 44 L20 38 L35 44 L50 38 L50 5 L35 11 L20 5 L5 11Z M12.125 24.5 L18.625 24.5 M21.875 24.5 L28.375 24.5 M34.875 20 L42.875 28 M34.875 28 L42.875 20"/>
+            </svg>
+            <div>
+            <!-- Software I am familiar with displayed in inventory system?-->
+            <span name="inventory" class="inter">Tools</span>
+
+            <!-- Languages I know and other things I know in a skill tree map -->
+            <span name="skills" class="inter">Skills</span>
+
+            <!-- Projects -->
+            <span name="quests" class="inter" >Quests</span>
+        </div>
+        <spacer></spacer>
+        </div>
+    </nav>
+
+        <svg id="cursor" width="60" height="60" stroke="#fff" fill="#00000000">
+            <!-- <path stroke="#00000080" stroke-width="7" d="M35 40 L10 20 L10 10 L20 10 L40 35Z"/>
+            <path stroke="#00000080" stroke-width="7.5" d="M29.25 45.75 L45.75 29.25"/>
+            <path stroke="#00000080" stroke-width="9" d="M37.5 37.5 L48.25 48.25"/> -->
+
+            <path stroke-width="7" d="M37.5 37.5 L47.5 47.5" filter="url(#f1)"/>
+            <path stroke-width="5" d="M35 40 L10 20 L10 10 L20 10 L40 35Z M30 45 L45 30" filter="url(#f1)"/>
+            <defs>
+                <filter id="f1" x="-60" y="-60" width="120" height="120">
+                    <feOffset in="SourceAlpha" dx="0" dy="0" />
+                    <feGaussianBlur stdDeviation="3" />
+                    <feBlend in="SourceGraphic" in2="blurOut" />
+                </filter>
+            </defs>
+        </svg>
+        <div id="tooltip" class="tooltip">Map</div>
+    
+</body>
+</html>

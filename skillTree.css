@@ -1,0 +1,28 @@
+* {
+    cursor: default;
+}
+
+body {
+    height: 100vh;
+    /* overflow: hidden; */
+    overflow: visible;
+}
+
+nav {
+    overflow: hidden;
+    z-index: 10;
+}
+
+.skill {
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: absolute;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+}
+
+canvas {
+    position: absolute;
+    overflow: visible;
+}

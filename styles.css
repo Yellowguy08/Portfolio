@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 @keyframes qRotate {
     0% {rotate: 0deg;}
     80% {rotate: 760deg;}
@@ -12,12 +14,27 @@
 * {
     padding: 0;
     margin: 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
     overscroll-behavior: none;
+    overflow-x: hidden;
+    cursor: none;
 }
 
 body {
-    background-color: #eee;
+    background: repeating-linear-gradient(black, black 5px, #505050 10px);
+    position: relative;
+}
+
+#cursor {
+    display: none;
+    position: absolute;
+    pointer-events: none;
+    /* box-shadow: #111 0 0 5px; */
+    /* width: 50px;
+    height: 50px;
+    background-color: pink; */
 }
 
 nav {
@@ -28,24 +45,43 @@ nav {
     align-items: center;
     /* justify-content: center; */
     padding: 2rem 0;
-    background: linear-gradient(45deg, black 20%, #222 50%, black 80%);
     width: 100%;
     position: relative;
+    background-color: black;
 }
 
 #nav-container {
-    white-space: nowrap;
+    display: flex;
     width: 100%;
+    justify-content: space-between;
     padding: 2rem;
-    animation-delay: 0;
-    animation-timing-function: ease;
-    animation-duration: 0.8s;
-    animation-fill-mode: forwards;
-    animation-iteration-count: 1;
 }
 
 a {
     text-decoration: none;
+    overflow-x: visible;
+}
+
+svg {
+    position: relative;
+}
+
+.tooltip {
+    display: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    border: 3px solid greenyellow;
+    box-shadow: black 0 0 10 10;
+    position: absolute;
+    background-color: black;
+    color: white;
+    top: 0;
+    left: 0;
+}
+
+spacer {
+    width: 55px;
 }
 
 button {
@@ -85,6 +121,7 @@ button:hover {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow-x: visible;
         
     background-color: purple;
 }
