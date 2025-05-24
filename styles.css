@@ -27,10 +27,6 @@ body {
     position: relative;
 }
 
-nav {
-    height: 200px;
-}
-
 #cursor {
     display: none;
     position: absolute;
@@ -42,13 +38,11 @@ nav {
 }
 
 nav {
-    height: 5vh;
 	display: flex;
     color: white;
     text-align: center;
     align-items: center;
     /* justify-content: center; */
-    padding: 2rem 0;
     width: 100%;
     position: relative;
     background-color: black;
@@ -57,7 +51,7 @@ nav {
 #nav-container {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 2rem;
 }
 

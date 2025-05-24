@@ -1,0 +1,126 @@
+* {
+    cursor: default;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    /* background: none; */
+    /* background-color: #aa70a6; */
+    overflow: initial;
+}
+
+
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+section {
+    width: 50%;
+    height: 100%;
+    padding: 1rem;
+}
+
+#quest-view {
+    color: whitesmoke;
+    text-shadow: black 0 0 10px;
+}
+
+.empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quest {
+    width: 100%;
+    color: whitesmoke;
+    aspect-ratio: 5;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.quest-border {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border: 3px solid yellowgreen;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.quest span {
+    height: 33%;
+    text-align: center;
+    /* border: 1px solid pink; */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 0.5rem;
+}
+
+.quest-tags {
+    font-size: small;
+    font-style: italic;
+}
+
+.quest-status {
+    justify-content: end;
+}
+
+.full-quest {
+
+    width: 100%;
+    height: calc(100% - 2rem);
+    color: whitesmoke;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+
+}
+
+.full-border {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border: 3px solid yellowgreen;
+    /* align-items: start; */
+}
+
+.full-quest span {
+    display: inline-block;
+    text-align: start;
+    padding: 1.5rem 1rem;
+    width: calc(50% - 2rem);
+}
+
+.full-status {
+    text-align: end !important;
+}
+
+.full-tags {
+    width: 100% !important;
+    height: 10%;
+    font-size: small;
+    font-style: italic;
+}
+
+.full-desc {
+    width: calc(100% - 2rem) !important;
+    margin: 0 1rem 5rem 0;
+    line-height: 3ex;
+}
+
+.full-quest img {
+  
+    display: block;
+    height: 50%;
+    margin: auto;
+
+}

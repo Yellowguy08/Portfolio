@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="styles.css">
-    <script defer src="boxBuilder.js"></script>
+    <!-- <script defer src="boxBuilder.js"></script> -->
+     <script src="builders.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="quests.css">
     <title>Quests</title>
 </head>
-<body>
+<body onload="questListBuilder()">
 
     <nav id="nav">
         <div id="nav-container">
@@ -25,13 +27,24 @@
             <span name="skills" class="inter">Skills</span>
 
             <!-- Projects -->
-            <span name="quests" class="inter" >Quests</span>
+            <span name="quests" class="inter">Quests</span>
         </div>
         <spacer></spacer>
         </div>
     </nav>
 
-        <svg id="cursor" width="60" height="60" stroke="#fff" fill="#00000000">
+    <main>
+
+        <section id="quest-list"></section>
+        <section id="quest-view" class="empty">
+
+            No Quests Selected
+
+        </section>
+        
+    </main>
+
+        <svg id="cursor" width="60" height="60" stroke="#fff" fill="#none">
             <!-- <path stroke="#00000080" stroke-width="7" d="M35 40 L10 20 L10 10 L20 10 L40 35Z"/>
             <path stroke="#00000080" stroke-width="7.5" d="M29.25 45.75 L45.75 29.25"/>
             <path stroke="#00000080" stroke-width="9" d="M37.5 37.5 L48.25 48.25"/> -->
