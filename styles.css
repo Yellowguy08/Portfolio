@@ -190,17 +190,3 @@ button:hover {
     animation-duration: 1s;
     /* rotate: 720deg; */
 }
-
-#hammer {
-    transform-box: fill-box;
-    transform-origin: center;
-
-    transform: rotate(-45deg);
-}
-
-#wrench {
-    transform-box: fill-box;
-    transform-origin: center;
-
-    transform: rotate(45deg);
-}
