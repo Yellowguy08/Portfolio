@@ -40,6 +40,12 @@ let projects = [
 
 ];
 
+function buildNav() {
+
+    document.body.innerHTML = '<div id="nav-container"><svg name="map" class="inter" width="55" height="49" stroke="currentColor"><path stroke-width="3" d="M5 11 L5 44 L20 38 L35 44 L50 38 L50 5 L35 11 L20 5 L5 11Z M12.125 24.5 L18.625 24.5 M21.875 24.5 L28.375 24.5 M34.875 20 L42.875 28 M34.875 28 L42.875 20"/></svg><div><svg name="inventory" class="inter" width="55" height="49" stroke-width="3" stroke="currentColor" fill="none"><rect width="30" height="30" x="12.5" y="13" /><rect width="30" height="15" x="12.5" y="13" /><rect width="7.5" height="12.5" x="5" y="30.5" /><rect width="7.5" height="12.5" x="42.5" y="30.5" /><path d="M22.5 13 V6 H32.5 V13 M27.5 24 V31" /></svg><span name="skills" class="inter">Skills</span><svg name="skills" class="inter" width="55" height="49" stroke-width="3" stroke="currentColor"><rect width="10" height="10" x="5" y="34" /><path d="M15 39 H25 M30 34 L20 24 M30 34 L40 24" /><rect width="10" height="10" x="25" y="34" /><rect width="10" height="10" x="10" y="14" /><rect width="10" height="10" x="40" y="14" /></svg>';
+
+}
+
 function questListBuilder() {
 
     // <div class="quest">
@@ -94,7 +100,20 @@ function questListBuilder() {
                     desc_view.classList.add("full-desc");
 
                     let img_view = document.createElement("img");
-                    img_view.src = obj.imgPth; 
+                    img_view.id = "quest-image";
+                    img_view.src = obj.imgPth;
+
+                    png24b(obj.imgPth)
+                    .then((value) => {
+
+                        img_view.style.visibility = "visible"
+
+                        if (value['w'] > value['h']) {
+                            img_view.style.width = `75%`;
+                            img_view.style.height = "auto";
+                            
+                        }
+                    });
 
                     border_view.appendChild(title_view);
                     border_view.appendChild(status_view);
@@ -105,7 +124,6 @@ function questListBuilder() {
                     quest_view_box.appendChild(border_view);
 
                     quest_view.appendChild(quest_view_box);
-
                 }
             });
 
@@ -139,4 +157,36 @@ function questListBuilder() {
 
     }
 
+}
+
+function png24b(url) { 
+    return new Promise(function(res, rej) {
+      var xhr = new XMLHttpRequest;
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState != 4) {
+          return;
+        }
+  
+        const PNG = new Uint8Array(xhr.response),
+              decoder = new TextDecoder();
+  
+        // PNG.slice(0, 8)      === [  _  P  N  G CR LF  _  _ ]
+        // PNG.slice(8, 16)     === [ CHUNKLENGTH CHUNKFORMAT ]
+        // IHDR must be the first CHUNKFORMAT:
+        // PNG.slice(16, 24)    === [ WIDTH------ HEIGHT----- ]
+  
+        if ( decoder.decode(PNG.slice(1, 4)) === 'PNG' ) {
+          const view = new DataView(xhr.response);
+          return res({ w: view.getUint32(16), h: view.getUint32(20) });
+        }
+  
+        return rej({ w: -1, h: -1 });
+      };
+  
+      xhr.open('GET', url, true);
+      xhr.responseType = "arraybuffer";
+      xhr.setRequestHeader('Range', 'bytes=0-24');
+      xhr.send(null);
+    });
 }
