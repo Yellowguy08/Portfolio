@@ -20,7 +20,7 @@ main {
 section {
     width: 50%;
     height: 100%;
-    padding: 1rem;
+    padding: 0 1rem;
 }
 
 #quest-view {
