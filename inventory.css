@@ -1,0 +1,45 @@
+* {
+    cursor: auto;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#display {
+    width: 33vw;
+}
+
+#display *:not(rect) {
+    width: 100%;
+    text-align: center;
+}
+
+#label {
+    aspect-ratio: 3;
+    background-color: tan;
+    border-radius: 1rem 0 0 1rem;
+    display: flex;
+
+    align-items: center;
+    font-size: xx-large;
+}
+
+#inventory {
+    width: 66vw;
+    height: 90vh;
+    background-color: tan;
+    border-radius: 0 1rem 1rem 1rem;
+    display: flex;
+}
+
+#content {
+    width: 80%;
+    height: 80%;
+    background-color: yellow;
+    border-radius: 1rem;
+    margin: auto;
+    align-items: center;
+}
