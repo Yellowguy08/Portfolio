@@ -9,7 +9,9 @@ main {
 }
 
 #display {
+    position: relative;
     width: 33vw;
+    height: 90vh;
 }
 
 #display *:not(rect) {
@@ -17,7 +19,14 @@ main {
     text-align: center;
 }
 
+#backpack {
+    position: absolute;
+    bottom: 0;
+}
+
 #label {
+    position: absolute;
+    top: 0;
     aspect-ratio: 3;
     background-color: tan;
     border-radius: 1rem 0 0 1rem;
