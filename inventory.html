@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="inventory.css">
     <!-- <script defer src="boxBuilder.js"></script> -->
     <script src="builders.js" defer></script>
+    <script src="inventory.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory</title>
 </head>
@@ -16,9 +17,10 @@
     <main>
 
         <section id="display">
-
             <div id="label">
-                <span>Tools</span>
+                <div id="label-border" class="inventory-border">
+                    <span>Tools</span>
+                </div>
             </div>
 
             <svg id="backpack" viewBox="0 0 55 49" stroke-width="3" stroke="#fff" fill="none">
@@ -32,8 +34,22 @@
             </svg>
         </section>
 
-        <section id="inventory" >
-            <section id="content"></section>
+        <section>
+            <div id="inventory">
+                <div class="inventory-border">
+
+                    <div id="content">
+
+                        <div> <span class="selected">></span> Visual Studio Code</div>
+                        <div> <span>></span> Unity</div>
+                        <div> <span>></span> Godot</div>
+                        <div> <span>></span> Scratch</div>
+                        <div> <span>></span> Github</div>
+
+                    </div>
+
+                </div>
+            </div>
         </section>
 
     </main>
