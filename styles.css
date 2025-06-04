@@ -42,7 +42,7 @@ nav {
     color: white;
     text-align: center;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: space-between;
     width: 100%;
     position: relative;
     background-color: black;

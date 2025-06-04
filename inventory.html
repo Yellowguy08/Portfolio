@@ -7,6 +7,7 @@
     <!-- <script defer src="boxBuilder.js"></script> -->
     <script src="builders.js" defer></script>
     <script src="inventory.js" defer></script>
+    <script src="boxBuilder.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory</title>
 </head>
@@ -40,11 +41,11 @@
 
                     <div id="content">
 
-                        <div> <span class="selected">></span> Visual Studio Code</div>
-                        <div> <span>></span> Unity</div>
-                        <div> <span>></span> Godot</div>
-                        <div> <span>></span> Scratch</div>
-                        <div> <span>></span> Github</div>
+                        <div> <span class="arrow selected">></span> Visual Studio Code <span class="stock">85</span></div>
+                        <div> <span class="arrow">></span> Unity <span class="stock">26</span></div>
+                        <div> <span class="arrow">></span> Godot <span class="stock">52</span></div>
+                        <div> <span class="arrow">></span> Scratch <span class="stock">99</span></div>
+                        <div> <span class="arrow">></span> Github <span class="stock">43</span></div>
 
                     </div>
 
@@ -55,10 +56,7 @@
     </main>
 
         <svg id="cursor" width="60" height="60" stroke="#fff" fill="#00000000">
-            <!-- <path stroke="#00000080" stroke-width="7" d="M35 40 L10 20 L10 10 L20 10 L40 35Z"/>
-            <path stroke="#00000080" stroke-width="7.5" d="M29.25 45.75 L45.75 29.25"/>
-            <path stroke="#00000080" stroke-width="9" d="M37.5 37.5 L48.25 48.25"/> -->
-
+            
             <path stroke-width="7" d="M37.5 37.5 L47.5 47.5" filter="url(#f1)"/>
             <path stroke-width="5" d="M35 40 L10 20 L10 10 L20 10 L40 35Z M30 45 L45 30" filter="url(#f1)"/>
             <defs>

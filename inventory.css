@@ -56,16 +56,24 @@ main {
 
 #content div {
     padding: 1rem;
+    position: relative;
 }
 
-#content div span {
+#content div .arrow {
     visibility: hidden;
     color: black;
 }
 
 #content .selected {
-    visibility: visible;
-    color: white;
+    visibility: visible !important;
+    color: white !important;
+}
+
+.stock {
+
+    position: absolute;
+    right: 0;
+
 }
 
 .inventory-border {
