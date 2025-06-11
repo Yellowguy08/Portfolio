@@ -1,0 +1,46 @@
+main {
+
+    height: 100vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.arrow {
+
+    color: white;
+    font-size: xx-large;
+
+    width: fit-content;
+
+    padding: 3rem 1rem;
+    margin: 0.5rem;
+    background-color: black;
+    border: 3px solid yellowgreen;
+    box-shadow: black 0 0 10px;
+
+    transition: transform 0.5s;
+}
+
+#forwards {
+    transform-origin: right;
+}
+
+#backwards {
+    transform-origin: left;
+}
+
+.arrow:not(.disabled):hover {
+
+    transform: scale(1.25);
+
+}
+
+.disabled {
+
+    color: gray;
+    border: 3px solid gray;
+
+}
