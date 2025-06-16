@@ -28,3 +28,61 @@ let mapFeatures = [
     new mapItem(),
 
 ];
+
+
+function createMapBackground() {
+
+    let svg = document.getElementById("Map-Background");
+    let width = svg.getBoundingClientRect().width;
+    let height = svg.getBoundingClientRect().height;
+
+    var path = "<path d='M0 ";
+
+    path += (height / 8) + " ";
+
+    var dist = 0;
+
+    while (dist < width) {
+        let rNum = (Math.random() * (width / 20)) + (width / 20);
+
+        dist += rNum;
+
+        path += `l ${rNum} `
+
+        if (Math.round(rNum) % 3 == 0) {
+            path += "-30 ";   
+        } else if (Math.round(rNum) % 3 == 1) {
+            path += "0 ";
+        } else {
+            path += "30 ";
+        }
+    }
+
+    path += `L ${width} `
+
+    path += (7 * (height / 8)) + " ";
+
+    dist = width;
+
+    while (dist > 0) {
+        let rNum = (Math.random() * (width / 20)) + (width / 20);
+
+        dist -= rNum;
+
+        path += `l ${-rNum} `
+
+        if (Math.round(rNum) % 3 == 0) {
+            path += "-30 ";   
+        } else if (Math.round(rNum) % 3 == 1) {
+            path += "0 ";
+        } else {
+            path += "30 ";
+        }
+    }
+
+    path += "'X />"
+
+    svg.innerHTML = path;
+}
+
+createMapBackground();

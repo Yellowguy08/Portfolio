@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="map.css">
     <script src="builders.js" defer></script>
     <script src="boxBuilder.js" defer></script>
+    <script src="map.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map</title>
     <link rel="shortcut icon" href="icon.svg" type="image/x-icon">
@@ -16,10 +17,16 @@
 
     <main>
 
+        <svg id="Map-Background" stroke="white" stroke-width="10">
+
+            <path d="M0 100 h25 l 10 10 l 10 -10" />
+            
+        </svg>
+
         <div id="backwards" class="arrow disabled"><</div>
 
         <div id="forwards" class="arrow">></div>
-
+        
     </main>
 
         <svg id="cursor" width="60" height="60" stroke="#fff" fill="#00000000">
