@@ -71,7 +71,6 @@ function createInfoBox(name) {
     app_title.classList.add("app-title");
     app_title.textContent = name;
     app_title.addEventListener("mousedown", function(event) {
-
         var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
         event.preventDefault();
@@ -79,28 +78,21 @@ function createInfoBox(name) {
         pos3 = event.clientX;
         pos4 = event.clientY;
 
-        document.onmouseup = closeDragElement(event);
-        document.onmousemove = elementDrag(event);
-
-        function elementDrag() {
-            event.preventDefault();
-            // calculate the new cursor position:
-            pos1 = pos3 - event.clientX;
-            pos2 = pos4 - event.clientY;
-            pos3 = event.clientX;
-            pos4 = event.clientY;
-            // set the element's new position:
-            app_info.style.top = (app_info.offsetTop - pos2) + "px";
-            app_info.style.left = (app_info.offsetLeft - pos1) + "px";
-        }
-
-        function closeDragElement() {
-            // stop moving when mouse button is released:
-            document.onmouseup = null;
+        document.onmouseup = function() {
             document.onmousemove = null;
         }
 
-    })
+        document.onmousemove = function() {
+            event.preventDefault();
+            pos1 = pos3 - window.event.clientX;
+            pos2 = pos4 - window.event.clientY;
+            pos3 = window.event.clientX;
+            pos4 = window.event.clientY;
+            console.log(`${pos1}, ${pos2}, ${pos3}, ${pos4}`);
+            app_info.style.top = (app_info.offsetTop - pos2) + "px";
+            app_info.style.left = (app_info.offsetLeft - pos1) + "px";
+        };
+    });
 
     let x = document.createElement("div");
     x.classList.add("x");
