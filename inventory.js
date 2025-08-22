@@ -82,13 +82,12 @@ function createInfoBox(name) {
             document.onmousemove = null;
         }
 
-        document.onmousemove = function() {
+        document.onmousemove = function(event) {
             event.preventDefault();
-            pos1 = pos3 - window.event.clientX;
-            pos2 = pos4 - window.event.clientY;
-            pos3 = window.event.clientX;
-            pos4 = window.event.clientY;
-            console.log(`${pos1}, ${pos2}, ${pos3}, ${pos4}`);
+            pos1 = pos3 - event.clientX;
+            pos2 = pos4 - event.clientY;
+            pos3 = event.clientX;
+            pos4 = event.clientY;
             app_info.style.top = (app_info.offsetTop - pos2) + "px";
             app_info.style.left = (app_info.offsetLeft - pos1) + "px";
         };
@@ -105,5 +104,11 @@ function createInfoBox(name) {
     top_bar.appendChild(x);
 
     app_info.appendChild(top_bar);
+
+    let resize = document.createElement("div");
+    resize.classList.add("resize");
+
+    app_info.appendChild(resize);
+
     document.body.appendChild(app_info);
 }
