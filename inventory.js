@@ -106,7 +106,32 @@ function createInfoBox(name) {
     app_info.appendChild(top_bar);
 
     let resize = document.createElement("div");
+    resize.innerHTML = "<svg stroke-width='3' stroke='#fff' viewBox='0 0 50 50'><path d='M45 5 L5 45 M45 20 L20 45 M45 35 L35 45'/></svg>"
     resize.classList.add("resize");
+    resize.addEventListener("mousedown", function(event) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+        event.preventDefault();
+
+        pos3 = event.clientX;
+        pos4 = event.clientY;
+
+        let width = app_info.getBoundingClientRect().width;
+        let height = app_info.getBoundingClientRect().height;
+
+        document.onmouseup = function() {
+            document.onmousemove = null;
+        }
+
+        document.onmousemove = function(event) {
+            event.preventDefault();
+            pos1 = event.clientX - pos3;
+            pos2 = event.clientY - pos4;
+
+            app_info.style.width = (width + pos1) + "px";
+            app_info.style.height = (height + pos2) + "px";
+        };
+    });
 
     app_info.appendChild(resize);
 

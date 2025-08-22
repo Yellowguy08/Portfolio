@@ -119,6 +119,7 @@ main {
     border-bottom: 3px solid yellowgreen;
     display: flex;
     overflow: hidden;
+    align-items: center;
     position: relative;
 }
 
@@ -126,6 +127,7 @@ main {
     text-align: center;
     width: calc(100% - 3px - 3vh);
     line-height: 3vh;
+    overflow: hidden;
     user-select: none;
 }
 
@@ -135,6 +137,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
     height: 100%;
     position: absolute;
     right: 0;
@@ -157,11 +160,20 @@ main {
     border-top: 3px solid yellowgreen;
     position: absolute;
     bottom: 0;
+    overflow: hidden;
     right: 0;
 
 }
 
 .resize:hover {
+    cursor: nw-resize;
+}
+
+.resize svg:hover {
+    cursor: nw-resize;
+}
+
+.resize svg path:hover {
 
     cursor: nw-resize;
 }
