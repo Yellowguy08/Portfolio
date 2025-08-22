@@ -190,3 +190,7 @@ button:hover {
     animation-duration: 1s;
     /* rotate: 720deg; */
 }
+
+#inv-cont-label {
+    border-bottom: 3px solid yellowgreen;
+}

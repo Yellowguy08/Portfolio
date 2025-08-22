@@ -2,21 +2,31 @@
     cursor: auto;
 }
 
+body {
+    height: 100vh;
+    position: relative;
+}
+
 main {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: calc(100% - (49px + 4rem));
 }
 
 #display {
     position: relative;
     width: 33vw;
-    height: 90vh;
+    height: 100%;
 }
 
 #display *:not(rect) {
     width: 100%;
     text-align: center;
+}
+
+#contents-display {
+    height: 100%;
 }
 
 #backpack {
@@ -29,7 +39,7 @@ main {
     top: 0;
     aspect-ratio: 3;
     background-color: black;
-    border-radius: 1rem 0 0 1rem;
+    /* border-radius: 1rem 0 0 1rem; */
     display: flex;
     color: white;
 
@@ -39,7 +49,7 @@ main {
 
 #inventory {
     width: 66vw;
-    height: 90vh;
+    height: 100%;
     background-color: black;
 
     color: whitesmoke;
@@ -47,11 +57,11 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 1rem 0;
 }
 
 #content {
     padding: 2rem;
+    user-select: none;
 }
 
 #content div {
@@ -86,6 +96,55 @@ main {
 
 #label-border {
     display: flex;
+    width: calc(100% - 5px);
+    margin-left: 5px;
     justify-content: center;
     align-items: center;
+}
+
+.app-info {
+    border: 3px solid greenyellow;
+    background-color: black;
+    width: 30vw;
+    height: 30vh;
+    position: absolute;
+    top: 50%;
+    color: white;
+    left: 50%;
+}
+
+.top-bar {
+    width: 100%;
+    height: 10%;
+    border: 3px solid yellowgreen;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.app-title {
+    text-align: center;
+    width: calc(100% - 3px - 3vh);
+    line-height: 3vh;
+    user-select: none;
+}
+
+.x {
+    border-left: 3px solid greenyellow;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    user-select: none;
+}
+
+.x:hover {
+    cursor: pointer;
+}
+
+.app-title:hover {
+    cursor: grab;
 }
