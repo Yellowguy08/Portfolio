@@ -12,7 +12,7 @@ body {
 
 
 main {
-    height: 100%;
+    height: calc(100% - (49px + 4rem));
     width: 100%;
     display: flex;
 }
@@ -131,19 +131,3 @@ section {
     left: 0;
 
 }
-
-::-webkit-scrollbar {
-    width: 20px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    border-radius: 10px;
-    margin: 2rem 0 ;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: yellowgreen;
-    border-radius: 10px;
-  }

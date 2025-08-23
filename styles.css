@@ -194,3 +194,19 @@ button:hover {
 #inv-cont-label {
     border-bottom: 3px solid yellowgreen;
 }
+
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    margin: 2rem 0 ;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: yellowgreen;
+    border-radius: 10px;
+  }

@@ -105,6 +105,16 @@ function createInfoBox(name) {
 
     app_info.appendChild(top_bar);
 
+    let desc = document.createElement("div");
+
+    let desc_content = document.createElement("div");
+    desc_content.textContent = getInfoDesc(name);
+    desc.classList.add("app-desc");
+
+    desc.appendChild(desc_content);
+
+    app_info.appendChild(desc);
+
     let resize = document.createElement("div");
     resize.innerHTML = "<svg stroke-width='3' stroke='#fff' viewBox='0 0 50 50'><path d='M45 5 L5 45 M45 20 L20 45 M45 35 L35 45'/></svg>"
     resize.classList.add("resize");
@@ -136,4 +146,23 @@ function createInfoBox(name) {
     app_info.appendChild(resize);
 
     document.body.appendChild(app_info);
+}
+
+function getInfoDesc(name) {
+
+    switch (String(name).toLowerCase()) {
+
+        case "vs code":
+            return "I have reasonable understanding of Visual Studio Code. I am able to confidantly navigate and use many of its features. I still lack an adept understanding of shortcuts and complex features.";
+        case "unity":
+            return "I can roughly navigate around Unity's UI and systems and can create simple game systems and scripts.";
+        case "godot":
+            return "I am able to navigate and create nodes, resources, and scripts (in C#) somewhat confidently.";
+        case "scratch":
+            return "I have a deep understanding how most of the blocks function as well as how to use extensions to create complex systems.";
+        case "github":
+            return "I have a basic understanding of the platform that allows me to use it with teams in for most basic and stardard purposes.";
+        defualt:
+            return "No Entry Available.";
+    }
 }

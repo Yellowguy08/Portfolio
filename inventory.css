@@ -5,6 +5,7 @@
 body {
     height: 100vh;
     position: relative;
+    overflow: hidden;
 }
 
 main {
@@ -106,10 +107,12 @@ main {
     border: 3px solid greenyellow;
     background-color: black;
     width: 30vw;
-    height: 30vh;
+    /* height: 30vh; */
+    min-height: fit-content;
     position: absolute;
     top: 50%;
     color: white;
+    /* min-width: fit-content; */
     left: 50%;
 }
 
@@ -120,6 +123,8 @@ main {
     display: flex;
     overflow: hidden;
     align-items: center;
+    min-width: fit-content;
+    min-height: fit-content;
     position: relative;
 }
 
@@ -176,4 +181,22 @@ main {
 .resize svg path:hover {
 
     cursor: nw-resize;
+}
+
+.app-desc {
+
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 1rem 0;
+}
+
+.app-desc div {
+
+    width: 90%;
+    height: 90%;
+    overflow: hidden;
+    line-height: 1.5ex;
 }
