@@ -1,6 +1,8 @@
 let inventory_items = document.querySelectorAll("#content div");
 let index = 0;
 
+var highestZ = 1;
+
 function removeClass() {
     inventory_items.forEach(obj => {
         obj.firstElementChild.classList.remove("selected");
@@ -15,7 +17,6 @@ document.body.addEventListener("keydown", function(event) {
         }
 
         if (event.key == "s" || event.key == "S" || event.key == "ArrowDown") {
-            console.log("down");
             removeClass();
             index ++;
             if (index >= inventory_items.length) {
@@ -24,7 +25,6 @@ document.body.addEventListener("keydown", function(event) {
 
             inventory_items[index].firstElementChild.classList.add("selected");
         } else if (event.key == "w" || event.key == "W" || event.key == "ArrowUp") {
-            console.log("up");
             removeClass();
             index --;
             if (index < 0) {
@@ -54,6 +54,9 @@ function checkForInfoBox(app) {
     if (app.firstElementChild.classList.contains("selected")) {
         if (!document.getElementById(app.children[1].textContent+"-info")) {
             createInfoBox(app.children[1].textContent);
+        } else {
+            document.getElementById(app.children[1].textContent+"-info").style.zIndex = highestZ+1;
+            highestZ++;
         }
     }
 
@@ -144,6 +147,16 @@ function createInfoBox(name) {
     });
 
     app_info.appendChild(resize);
+
+    app_info.addEventListener("mousedown", function() {
+        if (app_info.style.zIndex != highestZ) {
+            app_info.style.zIndex = highestZ + 1;
+            highestZ++;
+        }
+    })
+
+    app_info.style.zIndex = highestZ + 1;
+    highestZ ++;
 
     document.body.appendChild(app_info);
 }
