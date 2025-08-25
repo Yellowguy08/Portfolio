@@ -1,4 +1,4 @@
-const GAP = 200;
+const GAP = 150;
 const END = 2 * Math.PI;
 const R = 50;
 
