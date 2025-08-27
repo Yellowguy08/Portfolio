@@ -29,6 +29,7 @@ body {
 
 #cursor {
     display: none;
+    z-index: 1000;
     position: absolute;
     pointer-events: none;
     /* box-shadow: #111 0 0 5px; */

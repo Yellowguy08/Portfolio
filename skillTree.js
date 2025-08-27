@@ -1,4 +1,4 @@
-const GAP = 200;
+const GAP = 150;
 const END = 2 * Math.PI;
 const R = 50;
 
@@ -78,40 +78,95 @@ let skills = [
 
     new Skill("Arrays I", true, "General", -2, -1),
     new Skill("Arrays II", false, "Arrays I", -3, -1),
-    new Skill("2D Arrays I", true, "Arrays I", -4, 0),
-    new Skill("2D Arrays II", false, "2D Arrays I", -5, 0),
-    new Skill("3D Arrays", false, "2D Arrays I", -5, 1),
+    new Skill("2D Arrays I", true, "Arrays I", -3, 0),
+    new Skill("2D Arrays II", false, "2D Arrays I", -4, 0),
+    new Skill("3D Arrays", false, "2D Arrays I", -4, 1),
 
     new Skill("Game Dev", true, "Parent", 1, -
         1)
 ];
 
+// find largest and smallest x and y orients to determine size
+
 let c = document.querySelector("#canvas");
 
-c.width = window.innerWidth * 2;
-c.height = window.innerHeight * 2;
+function getMaxWidth() {
+  var max = 0;
+  skills.forEach(skill => {
+    if (Math.abs(skill.orient_X) > max) {
+      max = Math.abs(skill.orient_X);
+    }
+  });
 
-c.style.top = `${-0.5*window.innerHeight}px`;
-c.style.left = `${-0.5*window.innerWidth}px`;
+  return max / GAP;
+}
+
+function getMaxHeight() {
+  var max = 0;
+  skills.forEach(skill => {
+    if (Math.abs(skill.orient_Y) > max) {
+      max = Math.abs(skill.orient_Y);
+    }
+  });
+
+  return max / GAP;
+}
+
+function getXCullThreshold() {
+
+  for (var i = 0; i <= getMaxWidth(); i++) {
+      if (i * (2 * R + GAP) / (innerWidth / 2) >= 1) {
+        return i
+      }
+  }
+
+  return getMaxWidth();
+
+}
+
+function getYCullThreshold() {
+
+  for (var i = 0; i <= getMaxHeight(); i++) {
+      if (i * (2 * R + GAP) / (innerHeight / 2) >= 1) {
+        return i
+      }
+  }
+
+  return getMaxWidth();
+
+}
+
+c.width = innerWidth;
+c.height = innerHeight;
 
 let ctx = c.getContext("2d");
 
-// let main = document.getElementById("tempID");
+function draw(offsetX, offsetY) {
+  skills.forEach(skill => {
 
-skills.forEach(skill => {
+    console.log(offsetX + " " + offsetY);
 
-    createSkillTree(skill);
+      // if (skill.orient_X / GAP <= getXCullThreshold() && skill.orient_X / GAP >= -getXCullThreshold()) {
 
-});
+        // if (skill.orient_Y / GAP <= getYCullThreshold() && skill.orient_Y / GAP >= -getYCullThreshold()) {
+          createSkillTree(skill, offsetX, offsetY);
+        // }
 
-function createSkillTree(skill) {
+      // }
+
+  });
+}
+
+draw(0,0);
+
+function createSkillTree(skill, offsetX, offsetY) {
 
     ctx.beginPath();
 
     if (skill.parent != "") {
-        ctx.arc(c.width / 2 + skill.orient_X, c.height / 2 + skill.orient_Y, R, 0, END);
+        ctx.arc(c.width / 2 + skill.orient_X + offsetX, c.height / 2 + skill.orient_Y + offsetY, R, 0, END);
     } else {
-        ctx.arc(c.width / 2, c.height / 2, R, 0, END);
+        ctx.arc(c.width / 2 + offsetX, c.height / 2 + offsetY, R, 0, END);
     }
 
     ctx.strokeStyle = "white";
@@ -129,8 +184,8 @@ function createSkillTree(skill) {
     if (parent) {
         ctx.beginPath();
 
-        ctx.moveTo(c.width / 2 + parent.orient_X, c.height / 2 + parent.orient_Y);
-        ctx.lineTo(c.width / 2 + skill.orient_X, c.height / 2 + skill.orient_Y);
+        ctx.moveTo(c.width / 2 + parent.orient_X + offsetX, c.height / 2 + parent.orient_Y + offsetY);
+        ctx.lineTo(c.width / 2 + skill.orient_X + offsetX, c.height / 2 + skill.orient_Y + offsetY);
         ctx.strokeStyle = "white";
         ctx.lineWidth = 10;
         ctx.stroke();
@@ -164,11 +219,19 @@ function dragElement(elmnt) {
     // calculate the new cursor position:
     pos1 = pos3 - e.clientX;
     pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    // pos3 = e.clientX;
+    // pos4 = e.clientY;
+    
+    offsetX = pos1;
+    offsetY = pos2;
+
+    console.log(offsetX + " " + offsetY)
+
+    ctx.clearRect(0,0, c.width,c.height);
+    console.log("clear");
+    draw(-offsetX, -offsetY);
+
+
   }
 
   function closeDragElement() {

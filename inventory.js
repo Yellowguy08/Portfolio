@@ -54,7 +54,7 @@ function checkForInfoBox(app) {
     if (app.firstElementChild.classList.contains("selected")) {
         if (!document.getElementById(app.children[1].textContent+"-info")) {
             createInfoBox(app.children[1].textContent);
-        } else {
+        } else if (highestZ < 900) {
             document.getElementById(app.children[1].textContent+"-info").style.zIndex = highestZ+1;
             highestZ++;
         }
@@ -149,14 +149,16 @@ function createInfoBox(name) {
     app_info.appendChild(resize);
 
     app_info.addEventListener("mousedown", function() {
-        if (app_info.style.zIndex != highestZ) {
+        if (highestZ < 900 && app_info.style.zIndex != highestZ) {
             app_info.style.zIndex = highestZ + 1;
             highestZ++;
         }
     })
 
-    app_info.style.zIndex = highestZ + 1;
-    highestZ ++;
+    if (highestZ < 900) {
+        app_info.style.zIndex = highestZ + 1;
+        highestZ ++;
+    }
 
     document.body.appendChild(app_info);
 }

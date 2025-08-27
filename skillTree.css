@@ -25,4 +25,5 @@ nav {
 canvas {
     position: absolute;
     overflow: visible;
+    top: 0;
 }
