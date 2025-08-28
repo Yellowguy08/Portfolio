@@ -2,6 +2,9 @@ const GAP = 150;
 const END = 2 * Math.PI;
 const R = 50;
 
+var lastXOffSet = 0;
+var lastYOffset = 0;
+
 class Skill {
 
     constructor (name, unlocked, parent, orient_X, orient_Y) {
@@ -98,7 +101,7 @@ function getMaxWidth() {
     }
   });
 
-  return max / GAP;
+  return max;
 }
 
 function getMaxHeight() {
@@ -109,7 +112,7 @@ function getMaxHeight() {
     }
   });
 
-  return max / GAP;
+  return max;
 }
 
 function getXCullThreshold() {
@@ -144,15 +147,7 @@ let ctx = c.getContext("2d");
 function draw(offsetX, offsetY) {
   skills.forEach(skill => {
 
-    console.log(offsetX + " " + offsetY);
-
-      // if (skill.orient_X / GAP <= getXCullThreshold() && skill.orient_X / GAP >= -getXCullThreshold()) {
-
-        // if (skill.orient_Y / GAP <= getYCullThreshold() && skill.orient_Y / GAP >= -getYCullThreshold()) {
-          createSkillTree(skill, offsetX, offsetY);
-        // }
-
-      // }
+    createSkillTree(skill, offsetX, offsetY);
 
   });
 }
@@ -225,17 +220,19 @@ function dragElement(elmnt) {
     offsetX = pos1;
     offsetY = pos2;
 
-    console.log(offsetX + " " + offsetY)
-
     ctx.clearRect(0,0, c.width,c.height);
-    console.log("clear");
-    draw(-offsetX, -offsetY);
+    draw(-clamp(getMaxWidth() / -2, getMaxWidth() / 2, lastXOffSet + offsetX), -clamp(getMaxHeight() / -2, getMaxHeight() / 2, lastYOffset + offsetY));
 
 
   }
 
   function closeDragElement() {
     // stop moving when mouse button is released:
+
+    lastXOffSet += pos1;
+    lastYOffset += pos2;
+
+
     document.onmouseup = null;
     document.onmousemove = null;
   }
@@ -259,4 +256,10 @@ function dragElement(elmnt) {
     // }
 
     // main.appendChild(newSkill);
+}
+
+function clamp(floor, ceiling, num) {
+
+  return Math.max(floor, Math.min(ceiling, num));
+
 }
