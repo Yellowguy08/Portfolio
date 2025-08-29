@@ -7,7 +7,7 @@ var lastYOffset = 0;
 
 class Skill {
 
-    constructor (name, unlocked, parent, orient_X, orient_Y) {
+    constructor (name, unlocked, parent, orient_X, orient_Y, x, y) {
         this.name = name;
         this.unlocked = unlocked;
         this.parent = parent;
@@ -89,9 +89,8 @@ let skills = [
         1)
 ];
 
-// find largest and smallest x and y orients to determine size
-
 let c = document.querySelector("#canvas");
+let tooltipC = document.querySelector("#tooltipC");
 
 function getMaxWidth() {
   var max = 0;
@@ -113,30 +112,6 @@ function getMaxHeight() {
   });
 
   return max;
-}
-
-function getXCullThreshold() {
-
-  for (var i = 0; i <= getMaxWidth(); i++) {
-      if (i * (2 * R + GAP) / (innerWidth / 2) >= 1) {
-        return i
-      }
-  }
-
-  return getMaxWidth();
-
-}
-
-function getYCullThreshold() {
-
-  for (var i = 0; i <= getMaxHeight(); i++) {
-      if (i * (2 * R + GAP) / (innerHeight / 2) >= 1) {
-        return i
-      }
-  }
-
-  return getMaxWidth();
-
 }
 
 c.width = innerWidth;
@@ -163,6 +138,9 @@ function createSkillTree(skill, offsetX, offsetY) {
     } else {
         ctx.arc(c.width / 2 + offsetX, c.height / 2 + offsetY, R, 0, END);
     }
+
+    // console.log((c.width / 2 + offsetX));
+    // console.log((c.height / 2 + offsetY));
 
     ctx.strokeStyle = "white";
     ctx.lineWidth = 15;
@@ -229,8 +207,8 @@ function dragElement(elmnt) {
   function closeDragElement() {
     // stop moving when mouse button is released:
 
-    lastXOffSet += pos1;
-    lastYOffset += pos2;
+    lastXOffSet = clamp(getMaxWidth() / -2, getMaxWidth() / 2, lastXOffSet + pos1);
+    lastYOffset= clamp(getMaxHeight() / -2, getMaxHeight() / 2, lastYOffset + pos2);
 
 
     document.onmouseup = null;
@@ -261,5 +239,46 @@ function dragElement(elmnt) {
 function clamp(floor, ceiling, num) {
 
   return Math.max(floor, Math.min(ceiling, num));
+
+}
+
+document.addEventListener("mousemove", function(event) {
+  handleMouseMove(event);
+});
+
+function handleMouseMove(e) {
+  if (e.buttons == 0) {
+
+    let trueR = R + 15;
+
+    mouseX = parseInt(e.clientX - 0);
+    mouseY = parseInt(e.clientY - 0); // 0 is a stand in for offset
+
+    // Put your mousemove stuff here
+    var hit = false;
+    for (var i = 0; i < skills.length; i++) {
+        var skill = skills[i];
+        
+        var xFloor = c.width / 2 + skill.orient_X - lastXOffSet - trueR;
+        var yFloor = c.height / 2 + skill.orient_Y - lastYOffset - trueR;
+
+        if (mouseX > xFloor && mouseX < xFloor + 2 * trueR && mouseY > yFloor && mouseY < yFloor + 2 * trueR) {
+            tooltipC.style.display = "block";
+            tooltipC.style.left = e.clientX + (document.getElementById("cursor").getBoundingClientRect().width / 2) + "px";
+            tooltipC.style.top = e.clientY - (document.getElementById("cursor").getBoundingClientRect().height / 2) + "px";
+            tooltipC.textContent = skill.name;
+            hit = true;
+        }
+    }
+    if (!hit) {
+      tooltipC.style.display = "none";
+      tooltipC.style.left = 0;
+      tooltipC.style.top = 0;
+    }
+  } else {
+    tooltipC.style.display = "none";
+    tooltipC.style.left = 0;
+    tooltipC.style.top = 0;
+  }
 
 }
