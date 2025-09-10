@@ -1,6 +1,10 @@
+body {
+    height: 100vh;
+}
+
 main {
 
-    height: 100vh;
+    height: calc(100% - (49px + 4rem));
     position: relative;
 
     display: flex;
