@@ -37,19 +37,6 @@ class mapSvg {
         self.points.push(point);
     }
 
-    setDists(Xdist, Ydist) {
-        self.X_dist = Xdist;
-        self.Y_dist = Ydist;
-    }
-
-    getXDist() {
-        return self.X_dist;
-    }
-
-    getYDist() {
-        return self.Y_dist;
-    }
-
     getPoints() {
         return self.points;
     }
@@ -77,21 +64,12 @@ function CreateOldMap() {
 
     var currMapHeight = height / START_HEIGHT;
 
-    console.log("Starting Map Height: " + currMapHeight);
-    console.log("Threshold: +/- " + THRESHOLD);
-
     let m0 = new mapSvg();
 
     while (dist < width / 2 - 10) {
         let rNum = (Math.random() * (width / RATE)) + (width / RATE);
 
-        console.log("Random Number: " + Math.round(rNum));
-
         dist += rNum;
-
-        console.log("Distance/Width: " + Math.round(dist) + "/" + Math.round(width));
-
-        console.log(Math.round(rNum) % 3);
 
         if (Math.round(rNum) % 3 == 0) {
 
@@ -100,8 +78,6 @@ function CreateOldMap() {
             m0.addPoint([rNum, -min]);
             currMapHeight -= min;
             
-            console.log("...Rise " + Math.round(min) + "px");
-
         } else if (Math.round(rNum) % 3 == 1) {
 
             let max = Math.min(JUMP, Math.abs(height / START_HEIGHT + THRESHOLD - currMapHeight));
@@ -109,25 +85,13 @@ function CreateOldMap() {
             m0.addPoint([rNum, max]);
             currMapHeight += max;
 
-            console.log("...Fall " + Math.round(max) + "px");
-
         } else {
             m0.addPoint([rNum, 0]);
-            console.log("...Keep Straight");
         }
-
-        console.log("");
-        console.log("Current Height: " + currMapHeight);
-        console.log("");
 
     }
 
-    console.log("--------------------------------------------------------");
-    console.log("");
-
     m0.addPoint([dist, currMapHeight]);
-
-    console.log("Points: " + m0.getPoints());
 
     return m0.getPoints();
 
